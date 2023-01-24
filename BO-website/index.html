@@ -13,7 +13,7 @@
     <title>Radiacle Kunstspeeltuin</title>
 </head>
 <body>
-    <nav class="nav">
+    <nav class="nav" id="nav">
         <section class="nav__container">
             <img src="img/CNTCT-wit.webp" alt="" class="nav__logo">
         </section>
@@ -69,7 +69,7 @@
             </li>
         </ul>
     </nav>
-    <section class="banner">
+    <section class="banner" id="banner">
         <!-- <img src="img/4touchroosegaarde.jpg" alt="" class="banner__img"> -->
         <video src="video/pexels-ivan-khmelyuk-6894947.mp4" autoplay loop class="banner__video">jo</video>
         <article class="banner__text">
@@ -95,7 +95,7 @@
             </li>
         </ul>
     </section>
-    <section class="project" id="Project">
+    <section class="project" id="project">
         <article class="project__banner">
             <img src="img/4touchroosegaarde.jpg" alt="" class="project__img">
         </article>
@@ -111,7 +111,7 @@
             </p>
         </article>
     </section>
-    <section class="daan" id="Daan">
+    <section class="daan" id="daan">
         <article class="daan__slider">
             <ul class="daan__SliderList">
                 <li class="daan__sliders page1">
@@ -209,31 +209,108 @@
             </div>
         </article>
     </section>
-    <section class="team">
+    <section class="team" id="team">
         <article class="team__slider">
             <ul class="team__SliderList">
-                <li class="team__sliders page 1">
-                    <figure class="team__figure">
-                        <img src="img/Subject 7.webp" alt="" class="team__img">
+                <li class="team__sliders ">
+                    <figure class="team__imgBorder">
+                        <img src="img/Jacob.png" alt="" class="team__img">
+                        <button class="team__button" onclick="showModal(jacob)"></button>
                     </figure>
                     <div class="team__container">
-                        <h3 class="team__h3">Jacob</h3>
-                        <p class="team__p">
-                            Software Developer
-                        </p>
+                        <p class="team__text">Jacob</p>
+                        <p class="team__summary">Software Developer</p>
+                    </div>
+                </li>
+                <li class="team__sliders ">
+                    <figure class="team__imgBorder">
+                        <img src="img/Jari.png" alt="" class="team__img">
+                    </figure>
+                    <div class="team__container">
+                        <p class="team__text">Jari</p>
+                        <p class="team__summary">Software Developer/p>
+                    </div>
+                </li>
+                <li class="team__sliders ">
+                    <figure class="team__imgBorder">
+                        <img src="img/Tygo.png" alt="" class="team__img">
+                    </figure>
+                    <div class="team__container">
+                        <p class="team__text">Tygo</p>
+                        <p class="team__summary">Software Developer</p>
+                    </div>
+                </li>
+                <li class="team__sliders ">
+                    <figure class="team__imgBorder">
+                        <img src="img/Jill.png" alt="" class="team__img">
+                    </figure>
+                    <div class="team__container">
+                        <p class="team__text">Jill</p>
+                        <p class="team__summary">Media Vormgever</p>
+                    </div>
+                </li>
+                <li class="team__sliders ">
+                    <figure class="team__imgBorder">
+                        <img src="img/Hester.png" alt="" class="team__img">
+                    </figure>
+                    <div class="team__container">
+                        <p class="team__text">Hester</p>
+                        <p class="team__summary">Media Vormgever</p>
+                    </div>
+                </li>
+                <li class="team__sliders ">
+                    <figure class="team__imgBorder">
+                        <img src="img/Iza.png" alt="" class="team__img">
+                    </figure>
+                    <div class="team__container">
+                        <p class="team__text">Iza</p>
+                        <p class="team__summary">Media Vormgever</p>
+                    </div>
+                </li>
+                <li class="team__sliders ">
+                    <figure class="team__imgBorder">
+                        <img src="img/Fé.png" alt="" class="team__img">
+                    </figure>
+                    <div class="team__container">
+                        <p class="team__text">Fé</p>
+                        <p class="team__summary">Ruimtelijk Vormgever</p>
+                    </div>
+                </li>
+                <li class="team__sliders ">
+                    <figure class="team__imgBorder">
+                        <img src="img/Kiki.png" alt="" class="team__img">
+                    </figure>
+                    <div class="team__container">
+                        <p class="team__text">Kiki</p>
+                        <p class="team__summary">Ruimtelijk Vormgever</p>
                     </div>
                 </li>
             </ul>
         </article>
-        
-        <!-- <div class="daan__dots">
-            <p class="daan__sliderNumber" id="counter">1</p>
-            <div class="daan__dotContainer">
-                <button class="daan__buttonDots" onclick="showPage1()" id="button1">></button>
-                <button class="daan__buttonDots" onclick="showPage2()" id="button2"><</button>
-                <!-- <button class="daan__buttonDots" onclick="showPage3()" id="button3"></button> -->
-            </div>
-        </div> -->
+    </section>
+    <section class="modal__container" id="modalContainer">
+     <!-- The Modal Parc Life -->
+        <div class="modal" id="jacob">
+            <article class="modal__header">
+                <h2 class="modal__h2">
+                    Jacob
+                </h2>
+                <section class="modal__wrapper--1">
+                    <span onclick=closeModal(jacob) class="modal__close">&times;</span>
+                </section>
+            </article>
+            <section class="modal__main">
+                <article class="modal__foto">
+                    <img src="img/Jacob.png" alt="" class="modal__img">
+                </article>
+                <article class="modal__text">
+                    <h3 class="modal__h3">Jacob</h3>
+                    <p class="modal__paragraph">Software Developer</p>
+                    <p class="modal__paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora saepe consequuntur? Incidunt nemo commodi, tempora ratione iste suscipit necessitatibus numquam quisquam eveniet repellendus ipsa laboriosam, debitis, blanditiis temporibus deserunt.</p>
+                </article>
+            </section>
+        </div>
+        </div>
     </section>
 </body>
 </html>

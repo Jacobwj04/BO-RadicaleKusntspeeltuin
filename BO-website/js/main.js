@@ -61,3 +61,33 @@ function showPage2(){
 
 //     counter.innerHTML = "3";
 // };
+
+const nav = document.getElementById("nav");
+const banner = document.getElementById("banner");
+const project = document.getElementById("project");
+const daan = document.getElementById("daan");
+const team = document.getElementById("team");
+const modalContainer = document.getElementById("modalContainer");
+
+function showModal(name) {
+    var modalname = name;
+    modalname.style.display = "block";
+    modalContainer.style.display = "flex";
+    nav.style.display = "none";
+    banner.style.display = "none";
+    project.style.display = "none";
+    daan.style.display = "none";
+    team.style.display = "none";
+}
+  
+function closeModal(name) {
+    // When the user clicks on <span> (x), close the modal
+    var modalname = name;
+    modalname.style.display = "none";
+    modalContainer.style.display = "none";
+    nav.style.display = "flex";
+    banner.style.display = "flex";
+    project.style.display = "flex";
+    daan.style.display = "flex";
+    team.style.display = "flex";
+};

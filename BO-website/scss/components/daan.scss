@@ -1,12 +1,14 @@
 .daan{
-    height: 100vh;
+    min-height: 60vh;
     width: 100vw;
     position: relative;
     background: black;
+    display: flex;
 
     &__slider{
+        margin-top: 5rem;
         width: 90vw;
-        height: 80vh;
+        height: 100%;
         display: flex;
         align-items: center;
     }
@@ -99,7 +101,7 @@
 }
 
 .page1{
-    display: block;
+    display: flex;
 }
 
 .page2{
