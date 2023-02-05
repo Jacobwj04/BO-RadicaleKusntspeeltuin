@@ -1,126 +1,84 @@
-
 #include <FastLED.h> 
 
+// We define touch sensor here and connect this with the arduino board
+#define touchPin1 2 
+#define touchPin2 3 
+#define touchPin3 4 
+
+// We define ledstrip here and connect this with the arduino board
+#define ledStrip1 7 
+#define LedStrip2 8
+#define LedStrip3 9
+
+// Total ledlights is 300, we use per ledlight 60
 #define NUM_LEDS 60
-#define Pin1 2 // We define pin 2 here and we have connected this with the touch sensor
-#define DATA_PIN1 7
-#define Pin2 3 // We define pin 2 here and we have connected this with the touch sensor
-#define DATA_PIN2 8
-#define Pin3 4 // We define pin 2 here and we have connected this with the touch sensor
-#define DATA_PIN3 9
 
+// For each ledstrip we use another color
+CRGB white[NUM_LEDS];
+CRGB red[NUM_LEDS];
+CRGB blue[NUM_LEDS];
 
-// This is an array of leds.  One item for each led in your strip.
-CRGB leds1[NUM_LEDS];
-CRGB leds2[NUM_LEDS];
-CRGB leds3[NUM_LEDS];
-
-int ledPin = 13; // Here we make a variable ledPin 13 and this is connected with the light on the breadboard
+int ledPin = 13; 
  
+  void setup() {
+    delay(2000);
+    Serial.begin(9600);
+    pinMode(ledPin, OUTPUT);
+    pinMode(Pin1, INPUT);
+    pinMode(Pin2, INPUT);
+    pinMode(Pin3, INPUT);
 
-void setup() {
-       delay(2000);
-     Serial.begin(9600);
-pinMode(ledPin, OUTPUT);
-pinMode(Pin1, INPUT);
-pinMode(Pin2, INPUT);
-pinMode(Pin3, INPUT);
-//FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
+    FastLED.addLeds<WS2811, ledStrip1, RGB>(white, NUM_LEDS);
+    FastLED.addLeds<WS2811, ledStrip2, RGB>(red, NUM_LEDS);
+    FastLED.addLeds<WS2811, ledStrip3, RGB>(blue, NUM_LEDS);
+  }
 
-    FastLED.addLeds<WS2811, DATA_PIN1, RGB>(leds1, NUM_LEDS);
-    FastLED.addLeds<WS2811, DATA_PIN2, RGB>(leds2, NUM_LEDS);
-    FastLED.addLeds<WS2811, DATA_PIN3, RGB>(leds3, NUM_LEDS);
-    
 
-}
+  void loop() {
+     if (digitalRead(touchPin1) == HIGH){
+        for(int i = 60; NUM_LEDS > 0; i--) {
+        white[i] = 0x2F4F4F;
 
-// your leds.
-void loop() {
-   // Move a single white led 
+        //digitalWrite(ledPin, HIGH);
+//        Serial.println("Sensor 1 TOUCHED");
+        }
+     }
+    else  {
+        // Count all the leds and turn them into black
+        for (int i=0; i<white; i++){ 
+           white[i] = CRGB::Black;
+        }
+        delay(10);
+    }
+  
 
-     int Value1 = digitalRead(Pin1); 
-  if (Value1 == HIGH)
-  {
-    for(int whiteLed = 60; whiteLed > 0; whiteLed--) {
-      // Turn our current led on to white, then show the leds
-      leds1[whiteLed] = 0x2F4F4F;
+    if (digitalRead(touchPin2) == HIGH){
+      for(int i = 60; NUM_LEDS > 0; i--) {
+        red[i] = CRGB:: red;
 
-      // Show the leds (only one of which is set to white, from above)
-      FastLED.show();
-
-      // Wait a little bit
       delay(10);
-
-
-    //digitalWrite(ledPin, HIGH);
-    Serial.println("Sensor 1 TOUCHED");
     }
-    FastLED.show();
   }
-  else // If the ledPin is low, the serial print send 'not touched' and the ledPin 13 turned off
-  {
-       digitalWrite(ledPin,LOW);
-    Serial.println("not touched");
-    for (int i=0; i<NUM_LEDS; i++){
-         leds1[i] = CRGB::Black;
+    else {
+//      digitalWrite(touchPin2,LOW);
+        for (int i=0; i<NUM_LEDS; i++){
+         red[i] = CRGB::Black;
     }
-    FastLED.show();
   }
-       int Value2 = digitalRead(Pin2); 
-  if (Value2 == HIGH)
-  {
-    for(int blueLed = 60; blueLed > 0; blueLed--) {
-      // Turn our current led on to white, then show the leds
-      leds3[blueLed] = CRGB:: Blue;
+  
+    if (digitalRead(touchPin3) == HIGH){
+      for(int i = 60; NUM_LEDS > 0; i--) {
+      blue[redLed] = CRGB:: blue;
 
-      // Show the leds (only one of which is set to white, from above)
-      FastLED.show();
-
-      // Wait a little bit
       delay(10);
-
-
-    //digitalWrite(ledPin, HIGH);
-    Serial.println("Sensor 2 TOUCHED");
     }
-    FastLED.show();
   }
-  else // If the ledPin is low, the serial print send 'not touched' and the ledPin 13 turned off
-  {
-       digitalWrite(ledPin,LOW);
-    Serial.println("not touched");
-    for (int i=0; i<NUM_LEDS; i++){
-         leds3[i] = CRGB::Black;
-    }
-    FastLED.show();
+  
+    else {
+//      digitalWrite(ledPin3,LOW);
+      for (int i=0; i<NUM_LEDS; i++){
+         blue[i] = CRGB::Black;
+      }
   }
-       int Value3 = digitalRead(Pin3); 
-  if (Value3 == HIGH)
-  {
-    for(int redLed = 60; redLed > 0; redLed--) {
-      // Turn our current led on to white, then show the leds
-      leds3[redLed] = CRGB:: Red;
-
-      // Show the leds (only one of which is set to white, from above)
-      FastLED.show();
-
-      // Wait a little bit
-      delay(10);
-
-
-    //digitalWrite(ledPin, HIGH);
-    Serial.println("Sensor 3 TOUCHED");
-    }
-    FastLED.show();
-  }
-  else // If the ledPin is low, the serial print send 'not touched' and the ledPin 13 turned off
-  {
-       digitalWrite(ledPin,LOW);
-    Serial.println("not touched");
-    for (int i=0; i<NUM_LEDS; i++){
-         leds3[i] = CRGB::Black;
-    }
-    FastLED.show();
-  }
-  delay(10);  // We do here a delay so we can read the serial print
+  FastLED.show();
 }
